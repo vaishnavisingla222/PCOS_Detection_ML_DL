@@ -2,131 +2,195 @@
 
 ## 📌 Overview
 
-Polycystic Ovary Syndrome (PCOS) is a common endocrine disorder affecting women of reproductive age. Early diagnosis can help prevent long-term complications and improve patient outcomes.
+Polycystic Ovary Syndrome (PCOS) is one of the most common hormonal disorders affecting women of reproductive age. Early diagnosis is crucial to prevent complications such as infertility, metabolic disorders, and cardiovascular diseases.
 
-This project investigates PCOS detection using two complementary data sources:
+This project explores PCOS detection using two complementary data sources:
 
-📊 **Clinical and Physiological Patient Data (Tabular Dataset)**
+### 🔹 Clinical Data (Tabular Dataset)
 
-🖼️ **Ovarian Ultrasound Images (Medical Imaging Dataset)**
+Patient physiological and clinical measurements were analyzed using Machine Learning and Artificial Neural Networks.
 
-Machine Learning models were applied to structured clinical data, while Deep Learning models were trained on ultrasound images to evaluate their effectiveness in PCOS prediction.
+### 🔹 Ultrasound Images
+
+Ovarian ultrasound images were analyzed using Convolutional Neural Networks (CNNs) and Transfer Learning techniques.
+
+The objective is to compare traditional Machine Learning approaches with Deep Learning models and investigate the effectiveness of multimodal AI in healthcare diagnostics.
 
 ---
 
-## 📂 Datasets
+## 🗂 Project Workflow
 
-### 📊 Clinical Dataset
+```text
+Clinical Dataset
+       │
+       ▼
+ Data Cleaning
+       │
+       ▼
+ Exploratory Data Analysis
+       │
+       ▼
+ Feature Engineering
+       │
+       ▼
+ ML Models + ANN
+       │
+       ▼
+ Performance Evaluation
+
+──────────────────────────
+
+Ultrasound Images
+       │
+       ▼
+ Image Preprocessing
+       │
+       ▼
+ CNN Model
+       │
+       ▼
+ MobileNetV2
+       │
+       ▼
+ Performance Evaluation
+```
+
+---
+
+## 📊 Dataset Information
+
+### Clinical Dataset
 
 Dataset Source:
 
 https://www.kaggle.com/datasets/prasoonkottarathil/polycystic-ovary-syndrome-pcos
 
-**Dataset Summary**
 
 * 541 patient records
-* Approximately 50 clinical features
-* Demographic information
-* Hormonal measurements
-* Metabolic indicators
-* Reproductive health parameters
+* 50 clinical features
+* Binary Classification:
+
+  * PCOS Present (1)
+  * PCOS Absent (0)
 
 ---
 
-### 🖼️ Ultrasound Dataset
+### Ultrasound Dataset
 
 Dataset Source:
 
 https://www.kaggle.com/datasets/anaghachoudhari/pcos-detection-using-ultrasound-images
 
-**Dataset Summary**
 
-* Ovarian ultrasound images
-* Binary classification task:
+The image dataset contains ovarian ultrasound scans categorized as:
 
-  * Infected (PCOS)
-  * Non-Infected (Normal)
+* Infected (PCOS)
+* Not Infected (Non-PCOS)
+
+Images were resized and normalized before training CNN-based models.
 
 ---
 
-## 🔄 Project Workflow
+## 🔍 Exploratory Data Analysis
+
+The following analyses were performed:
+
+✅ Missing Value Detection
+
+✅ Outlier Handling
+
+✅ Feature Correlation Analysis
+
+✅ Class Distribution Analysis
+
+✅ Feature Importance Visualization
+
+✅ Heatmaps & Statistical Insights
+
+---
+
+## 🤖 Models Implemented &  📈 Results Summary
+
+### Clinical Dataset
+
+| Model               | Accuracy  | F1 Score  | ROC-AUC   |
+| ------------------- | --------- | --------- | --------- |
+| Logistic Regression | 0.890     | 0.838     | 0.951     |
+| Random Forest       | 0.917     | 0.862     | 0.954     |
+| Tuned Random Forest | 0.927     | 0.882     | **0.958** |
+| XGBoost             | **0.936** | **0.896** | 0.948     |
+| ANN                 | 0.890     | 0.829     | 0.920     |
+
+### Best Tabular Model
+
+🏆 **XGBoost**
 
 ```text
-Clinical Data
-      ↓
-Data Cleaning
-      ↓
-Feature Engineering
-      ↓
-Model Training
-      ↓
-Performance Evaluation
-
---------------------------------
-
-Ultrasound Images
-      ↓
-Image Preprocessing
-      ↓
-Data Augmentation
-      ↓
-CNN / MobileNetV2
-      ↓
-Performance Evaluation
+Accuracy : 93.6%
+F1 Score : 89.6%
 ```
 
----
+### Ultrasound Image Dataset
 
-## 🤖 Models Implemented
+| Model       | Accuracy   |
+| ----------- | ---------- |
+| CNN         | 100.0%     |
+| MobileNetV2 | **100.0%** |
 
-### Machine Learning Models
+### Best Image Model
 
-* Logistic Regression
-* Random Forest
-* XGBoost
-* Artificial Neural Network (ANN)
+🏆 **MobileNetV2**
 
-### Deep Learning Models
+```text
+Test Accuracy : 100.0%
+```
 
-* Convolutional Neural Network (CNN)
-* MobileNetV2 (Transfer Learning)
+### Observations
 
----
-
-## 📈 Evaluation Metrics
-
-The models were evaluated using:
-
-* Accuracy
-* Precision
-* Recall
-* F1-Score
-* Confusion Matrix
-* Cross Validation
+* Both CNN and MobileNetV2 achieved excellent classification performance on the ultrasound dataset.
+* Transfer learning using MobileNetV2 enabled faster convergence and efficient feature extraction.
+* Further validation on external datasets is recommended to assess model generalization.
 
 ---
 
-## 🛠️ Technologies Used
+## 🛠 Technologies Used
+
+### Languages
 
 * Python
-* TensorFlow
-* Keras
-* Scikit-Learn
-* XGBoost
+
+### Libraries
+
 * NumPy
 * Pandas
 * Matplotlib
-* Kaggle Notebook Environment
+* Seaborn
+* Scikit-Learn
+* TensorFlow
+* Keras
+* XGBoost
+* OpenCV
+* Pillow
 
 ---
 
-## 🚀 Future Improvements
+## 💡 Key Learnings
 
-* Hybrid model combining clinical and imaging features
-* Explainable AI using Grad-CAM
-* Streamlit-based deployment
-* Validation on larger datasets
-* Real-world clinical integration
+* Healthcare datasets require extensive preprocessing.
+* Feature selection significantly impacts performance.
+* Ensemble models outperform simple linear models.
+* Transfer Learning can effectively extract medical image features.
+* Combining tabular and imaging data offers promising potential for AI-assisted diagnosis.
+
+---
+
+## Future Improvements
+
+* Hybrid multimodal architecture combining tabular and ultrasound image features.
+* Explainable AI using SHAP for model interpretability.
+* K-Fold cross-validation for ultrasound image classification models.
+* External dataset validation to assess model generalization.
+* Streamlit deployment for real-time PCOS prediction.
 
 ---
 
@@ -134,12 +198,6 @@ The models were evaluated using:
 
 **Vaishnavi Singla**
 
-B.E. Computer Science & Engineering
-
-Thapar Institute of Engineering & Technology
-
-GitHub: https://github.com/vaishnavisingla222
-
 ---
 
-⭐ If you found this project interesting, feel free to star the repository.
+⭐ If you found this project interesting, consider giving it a star!
