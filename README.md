@@ -187,10 +187,10 @@ Test Accuracy : 100.0%
 ## Future Improvements
 
 * Hybrid multimodal architecture combining tabular and ultrasound image features.
+* Streamlit deployment for real-time PCOS prediction.
 * Explainable AI using SHAP for model interpretability.
 * K-Fold cross-validation for ultrasound image classification models.
 * External dataset validation to assess model generalization.
-* Streamlit deployment for real-time PCOS prediction.
 
 ---
 
